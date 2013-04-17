@@ -40,3 +40,49 @@ hash x264 ffmpeg ffplay ffprobe
 ````
 
 [Source](https://ffmpeg.org/trac/ffmpeg/wiki/UbuntuCompilationGuide)
+
+## Open UDP Ports via UFW
+
+Start by installing uwf:  
+
+```
+sudo apt-get install ufw
+```
+
+Then you should enable ufw:
+
+```
+sudo ufw enable
+```
+
+Don't do my mistake and lock yourself out of ssh:
+
+```
+sudo ufw allow ssh
+```
+
+To allow ports and protocols:
+
+```
+sudo ufw allow 30010/udp
+```
+
+
+To check the ufw status simply:
+
+```
+sudo ufw status
+
+Firewall loaded
+
+To                         Action  From
+--                         ------  ----
+22:tcp                     DENY    192.168.0.1
+22:udp                     DENY    192.168.0.1
+22:tcp                     DENY    192.168.0.7
+22:udp                     DENY    192.168.0.7
+22:tcp                     ALLOW   192.168.0.0/24
+22:udp                     ALLOW   192.168.0.0/24
+```
+
+[Source](https://help.ubuntu.com/community/UFW)
