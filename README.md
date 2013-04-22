@@ -86,3 +86,105 @@ To                         Action  From
 ```
 
 [Source](https://help.ubuntu.com/community/UFW)
+
+#Linode Debian GNU/Linux 6.0 Configuration
+---
+
+##Install Node JS (Latest)
+
+###1. Remove previous installations
+
+Find where Node is installed
+```
+which node
+```
+Returns
+```
+/path/bin/node
+```
+To remove everything related to your previous installation
+```
+rm -r bin/node bin/node-waf include/node lib/node lib/pkgconfig/nodejs.pc share/man/man1/node.1
+```
+
+[source](http://stackoverflow.com/questions/5650169/uninstall-node-js-using-linux-command-line)
+
+###2. Install Latest NodeJs
+
+Compile node as root:
+```
+apt-get install python g++ make
+mkdir ~/nodejs && cd $_
+wget -N http://nodejs.org/dist/node-latest.tar.gz
+tar xzvf node-latest.tar.gz && cd `ls -rd node-v*`
+./configure
+make install
+```
+
+[source](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
+
+##Install MongoDB (Latest)
+
+Configure Package Management System (APT)
+```
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+```
+
+Create 10gen.list
+```
+sudo nano /etc/apt/sources.list.d/10gen.list
+```
+and add the following
+```
+deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen
+```
+Save and Exit
+
+Now issue the following command to reload your repository
+```
+sudo apt-get update
+```
+
+Install MongoDB
+```
+sudo apt-get install mongodb-10gen
+```
+
+### Controlling MongoDB
+
+Start mongod:
+```
+sudo /etc/init.d/mongodb start
+```
+
+Stop mongod:
+```
+sudo /etc/init.d/mongodb stop
+```
+
+Restart mongod:
+```
+sudo /etc/init.d/mongodb restart
+```
+
+[source](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
