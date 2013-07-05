@@ -9,6 +9,7 @@ sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get update
 sudo apt-get install nodejs
 ```
+[source](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
 
 ## Intstall ffmpeg
 
